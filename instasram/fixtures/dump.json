@@ -1,0 +1,74 @@
+[
+{
+  "model": "post.tag",
+  "pk": 1,
+  "fields": {
+    "title": "cars",
+    "slug": "cars"
+  }
+},
+{
+  "model": "post.tag",
+  "pk": 2,
+  "fields": {
+    "title": "porsche",
+    "slug": "porsche"
+  }
+},
+{
+  "model": "post.tag",
+  "pk": 3,
+  "fields": {
+    "title": "porsche2",
+    "slug": "porsche2"
+  }
+},
+{
+  "model": "post.postfilecontent",
+  "pk": 1,
+  "fields": {
+    "user": 4,
+    "file": "user_4/Porsche-911-1-1024x555_HQg1ikd.jpg"
+  }
+},
+{
+  "model": "post.postfilecontent",
+  "pk": 2,
+  "fields": {
+    "user": 4,
+    "file": "user_4/Porsche-911-1-1024x555.jpg"
+  }
+},
+{
+  "model": "post.post",
+  "pk": "83f34c83-c0fd-4dd9-8dbf-5dfcd72cd55f",
+  "fields": {
+    "caption": "porsche2",
+    "posted": "2023-03-28T13:24:29.229Z",
+    "user": 4,
+    "likes": 0,
+    "content": [
+      2
+    ],
+    "tags": [
+      3
+    ]
+  }
+},
+{
+  "model": "post.post",
+  "pk": "9d4637e8-2f09-425e-912f-082a0728a295",
+  "fields": {
+    "caption": "porsche",
+    "posted": "2023-03-28T13:23:25.102Z",
+    "user": 4,
+    "likes": 0,
+    "content": [
+      1
+    ],
+    "tags": [
+      2
+    ]
+  }
+}
+]
