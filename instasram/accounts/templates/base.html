@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+    <title>My instagram</title>
     <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -15,7 +15,7 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="https://bulma.io">
-      <img src="{% static 'img/instagram_logo.png' %} width="135" height="50">
+      <img src="{% static 'img/logo.jpg' %}" >
     </a>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -70,6 +70,7 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
+
         <div class="buttons">
           <a class="button is-primary">
             <strong>Зарегистрироваться</strong>
@@ -86,6 +87,7 @@
     <div class="container">
 
         {% block content %}
+
         {% endblock %}
 
         {% block pagination %}

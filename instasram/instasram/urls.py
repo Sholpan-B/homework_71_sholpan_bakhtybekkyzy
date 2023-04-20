@@ -18,16 +18,18 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from accounts.views import UserProfile, follow
+from accounts.views import user_profile, follow
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('post.urls')),
     path('user/', include('accounts.urls')),
     path('notifications/', include('notifications.urls')),
-    path('<username>/', UserProfile, name='profile'),
-    path('<username>/saved', UserProfile, name='profilefavorites'),
+    path('<username>/', user_profile, name='profile'),
+    path('<username>/saved', user_profile, name='profilefavorites'),
     path('<username>/follow/<option>', follow, name='follow'),
+    path('api/', include('api.urls')),
+    path('rest/', include('rest_framework.urls', namespace='rest_framework'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

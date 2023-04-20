@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+    <title>My instagram</title>
     <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -16,7 +16,7 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="">
-      <img src="{% static 'img/instagram_logo.png' %}" width="135" height="50">
+      <img src="{% static 'img/logo.jpg' %}">
     </a>
 
     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -75,11 +75,18 @@
           <a class="navbar-item">
             Report an issue
           </a>
+
           <hr class="navbar-divider">
           <a href="{% url 'logout' %}" class="navbar-item">
             Log out
           </a>
         </div>
+          <a class="navbar-item">
+                <form action="{% url 'search_users' %}" method="get" >
+                    <input type="text" name="q" placeholder="Search users...">
+                    <button type="submit">Search</button>
+                </form>
+            </a>
       </div>
     </div>
 

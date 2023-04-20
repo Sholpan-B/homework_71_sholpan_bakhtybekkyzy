@@ -5,8 +5,6 @@ from django.template import loader
 from notifications.models import Notification
 
 
-# Create your views here.
-
 def ShowNotifications(request):
     user = request.user
     notifications = Notification.objects.filter(user=user).order_by('-date')

@@ -37,10 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'accounts',
     'post',
     'notifications',
     'comment',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'api',
 
 ]
 
@@ -74,6 +78,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'instasram.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases

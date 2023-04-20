@@ -15,7 +15,6 @@ from django.urls import reverse
 from accounts.models import Profile
 
 
-# Create your views here.
 @login_required
 def index(request):
     user = request.user
@@ -31,8 +30,7 @@ def index(request):
     template = loader.get_template('index.html')
 
     context = {
-        'post_items': post_items,
-
+        'post_items': post_items
     }
 
     return HttpResponse(template.render(context, request))
@@ -44,17 +42,14 @@ def PostDetails(request, post_id):
     profile = Profile.objects.get(user=user)
     favorited = False
 
-    # comment
     comments = Comment.objects.filter(post=post).order_by('date')
 
     if request.user.is_authenticated:
         profile = Profile.objects.get(user=user)
-        # For the color of the favorite button
 
         if profile.favorites.filter(id=post_id).exists():
             favorited = True
 
-    # Comments Form
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():

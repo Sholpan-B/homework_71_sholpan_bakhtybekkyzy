@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from accounts.forms import SignupForm, ChangePasswordForm, EditProfileForm
 from django.contrib.auth.models import User
@@ -17,7 +18,7 @@ from django.core.paginator import Paginator
 from django.urls import resolve
 
 
-def UserProfile(request, username):
+def user_profile(request, username):
     user = get_object_or_404(User, username=username)
     profile = Profile.objects.get(user=user)
     url_name = resolve(request.path).url_name
@@ -53,7 +54,7 @@ def UserProfile(request, username):
     return HttpResponse(template.render(context, request))
 
 
-def UserProfileFavorites(request, username):
+def user_profile_favorites(request, username):
     user = get_object_or_404(User, username=username)
     profile = Profile.objects.get(user=user)
 
@@ -80,7 +81,7 @@ def UserProfileFavorites(request, username):
     return HttpResponse(template.render(context, request))
 
 
-def Signup(request):
+def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
@@ -101,7 +102,7 @@ def Signup(request):
 
 
 @login_required
-def PasswordChange(request):
+def password_change(request):
     user = request.user
     if request.method == 'POST':
         form = ChangePasswordForm(request.POST)
@@ -121,12 +122,12 @@ def PasswordChange(request):
     return render(request, 'change_password.html', context)
 
 
-def PasswordChangeDone(request):
+def password_change_done(request):
     return render(request, 'change_password_done.html')
 
 
 @login_required
-def EditProfile(request):
+def edit_profile(request):
     user = request.user.id
     profile = Profile.objects.get(user__id=user)
     BASE_WIDTH = 400
@@ -173,3 +174,17 @@ def follow(request, username, option):
         return HttpResponseRedirect(reverse('profile', args=[username]))
     except User.DoesNotExist:
         return HttpResponseRedirect(reverse('profile', args=[username]))
+
+
+def search_users(request):
+    query = request.GET.get('q')
+
+    profiles = Profile.objects.filter(Q(user__username__icontains=query) |
+                                      Q(user__email__icontains=query) |
+                                      Q(first_name__icontains=query))
+
+    context = {
+        'profiles': profiles,
+    }
+
+    return render(request, 'search_results.html', context)
